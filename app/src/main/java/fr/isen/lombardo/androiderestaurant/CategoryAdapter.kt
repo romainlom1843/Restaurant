@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.isen.lombardo.androiderestaurant.databinding.DishesCellBinding
+import fr.isen.lombardo.androiderestaurant.models.Item
 
 
-class CategoryAdapter(private val entries: List<String>): RecyclerView.Adapter<CategoryAdapter.DishesViewHolder>() {
+class CategoryAdapter(private val entries: List</*Item*/String>/*, private val categoriesClickListener: (String) -> Unit*/)
+    : RecyclerView.Adapter<CategoryAdapter.DishesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishesViewHolder {
         return DishesViewHolder(DishesCellBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
-    <string name="hello">Bienvenue\nchez</string>
-    <string name="entrée">Entrées</string>
+    <string name="entree">Entrées</string>
     <string name="main">Plats</string>
-    <string name="dessert">Désserts</string>
-    <string name="menu">Menus</string>
-    <string name="toast_content">Contenu du toast</string>
+    <string name="dessert">Desserts</string>
+
+
 </resources>

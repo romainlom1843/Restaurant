@@ -16,25 +16,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.entreeTitle.setOnClickListener{
-            val intent = Intent(this, CategoryActivity::class.java)
-            startActivity(intent)
+            startCategoryActivity(ItemType.ENTREE)
         }
         binding.platTitle.setOnClickListener{
-            val intent = Intent(this, CategoryActivity::class.java)
-            startActivity(intent)
+            startCategoryActivity(ItemType.MAIN)
         }
         binding.dessertsTitle.setOnClickListener{
-            val intent = Intent(this, CategoryActivity::class.java)
-            startActivity(intent)
+            startCategoryActivity(ItemType.DESSERT)
         }
-        binding.menusTitle.setOnClickListener{
-            val intent = Intent(this, CategoryActivity::class.java)
-            startActivity(intent)
-        }
+
 
 
     }
-    private fun statCategoryActivity(item: ItemType) {
+    private fun startCategoryActivity(item: ItemType) {
         val intent = Intent(this, CategoryActivity::class.java)
         intent.putExtra(CATEGORY_NAME, item)
         startActivity(intent)

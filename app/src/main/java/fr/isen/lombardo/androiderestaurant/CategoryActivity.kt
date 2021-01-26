@@ -1,16 +1,11 @@
 package fr.isen.lombardo.androiderestaurant
 
-import android.content.Intent
-import android.icu.text.CaseMap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telephony.AccessNetworkConstants
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
 import fr.isen.lombardo.androiderestaurant.databinding.ActivityCategoryBinding
@@ -19,10 +14,12 @@ import fr.isen.lombardo.androiderestaurant.models.MenuResult
 import org.json.JSONObject
 
 enum class ItemType {
-    ENTREE, MAIN, DESSERT, MENU
+    ENTREE, MAIN, DESSERT
+
 }
 class CategoryActivity : AppCompatActivity() {
     private lateinit var bindind: ActivityCategoryBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,27 +29,24 @@ class CategoryActivity : AppCompatActivity() {
         val selectedItem = intent.getSerializableExtra(MainActivity.CATEGORY_NAME) as? ItemType
         bindind.categoryTitle.text = getCategoryTitle(selectedItem)
         val categoryTitle= getCategoryTitle(selectedItem)
-
-       // if (bindind.categoryTitle.text == "Entrées") {
-        loadList(/*categoryTitle*/)
         makeRequest(categoryTitle)
-       // }
         Log.d("lifecycle", "onCreate")
     }
 
-    private fun loadList(/*categoryTitle:String*/) {
-        var entries = listOf<String>("tagliatelles pesto", "tartare de dorade", "salade césar")
-        val adapter = CategoryAdapter(entries)
-        bindind.recyclerView.layoutManager = LinearLayoutManager(this)
-        bindind.recyclerView.adapter = adapter
+    private fun loadList(dishes: List<Item>?) {
+        val entries = dishes?.map { it.name }
+        entries?.let {
+            val adapter = CategoryAdapter(entries)
+            bindind.recyclerView.layoutManager = LinearLayoutManager(this)
+            bindind.recyclerView.adapter = adapter
+        }
     }
-
     private fun getCategoryTitle(item: ItemType?): String {
         return when (item) {
-            ItemType.ENTREE -> getString(R.string.entrée)
+            ItemType.ENTREE -> getString(R.string.entree)
             ItemType.MAIN -> getString(R.string.main)
             ItemType.DESSERT -> getString(R.string.dessert)
-            ItemType.MENU -> getString(R.string.menu)
+
             else -> ""
         }
 
@@ -71,8 +65,15 @@ class CategoryActivity : AppCompatActivity() {
                     response ->
                     Log.d("Request",response.toString())
                     val menu=GsonBuilder().create().fromJson(response.toString(),MenuResult::class.java )
-                    menu.data.firstOrNull() {
+                    val items = menu.data.firstOrNull() {
                       categoryTitle == it.name
+                    }?.items
+                    if(items != null)
+                    {
+                        loadList(items)
+                    }else
+                    {
+                        Log.d("categories", "no category")
                     }
             },
             {
@@ -80,27 +81,6 @@ class CategoryActivity : AppCompatActivity() {
                     Log.d("Request", error.localizedMessage)
             }
         )
-
-        /*val stringRequest = StringRequest(
-            Request.Method.GET,
-            url, Response.Listener<String> { response ->
-                Log.d("Request", response)
-            }, Response.ErrorListener { error ->
-                Log.d("Request", error.localizedMessage)
-            }
-        )*/
-
         queue.add(request)
     }
-/*    private fun displayCategories(menu: List<Item>){
-        binding.categorieLoader.isVisible = false
-        binding.listCategory.isVisible = true
-
-        binding.listCategory.LayoutManager = LinearLayoutManager(this)
-        binding.listCategory.adpater = CategoryAdapter(menu){
-            val intent = Intent( this, DetailsActivity::class.java)
-            intent.putExtra("dish", it)
-        startActivity(intent)
-        }
-    }*/
 }
