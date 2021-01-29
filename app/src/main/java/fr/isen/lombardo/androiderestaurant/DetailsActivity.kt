@@ -3,7 +3,9 @@ package fr.isen.lombardo.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import fr.isen.lombardo.androiderestaurant.adapter.DetailViewAdapter
 import fr.isen.lombardo.androiderestaurant.databinding.ActivityDetailsBinding
+import fr.isen.lombardo.androiderestaurant.models.Item
 
 private lateinit var binding: ActivityDetailsBinding
 class DetailsActivity : AppCompatActivity() {
@@ -11,9 +13,12 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        /*val intent = Intent(this, DetailsActivity::class.java)
-        startActivity(intent)*/
+        val dish  = intent.getSerializableExtra("dish") as Item
 
+        binding.dishesIngredients.text = dish.ingredients.map { it.name }.joinToString(", ")
+        dish.getAllPictures()?.let {
+            binding.detailPager.adapter = DetailViewAdapter(this, it)
+        }
     }
 
 }

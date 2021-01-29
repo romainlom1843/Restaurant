@@ -22,10 +22,10 @@ class DetailFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getStringArrayList("URL")?.let {
+        arguments?.getString("URL")?.let {
             Picasso.get()
-                //.load(it)
-                //.into(binding.photo)
+                .load(it)
+                .into(binding.photo)
         }
     }
 

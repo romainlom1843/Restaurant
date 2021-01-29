@@ -1,5 +1,6 @@
 package fr.isen.lombardo.androiderestaurant.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
+import fr.isen.lombardo.androiderestaurant.DetailsActivity
 import fr.isen.lombardo.androiderestaurant.MainActivity
 import fr.isen.lombardo.androiderestaurant.R
 import fr.isen.lombardo.androiderestaurant.adapter.CategoryAdapter
@@ -39,6 +41,9 @@ class CategoryActivity : AppCompatActivity() {
         dishes?.let {
             val adapter =
                 CategoryAdapter(it) { dish ->
+                    val intent = Intent(this, DetailsActivity::class.java)
+                    intent.putExtra("dish", dish)
+                    startActivity(intent)
                     Log.d("dish", "selected dish ${dish.name}")
                 }
             binding.recyclerView.layoutManager = LinearLayoutManager(this)

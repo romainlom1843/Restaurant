@@ -52,24 +52,5 @@ class CategoryAdapter(private val entries: List<Item>,
                     //.error(R.drawable.villa_soleil)
         }
     }
-    class DetailsViewHolder(detailsBinding: ActivityDetailsBinding): RecyclerView.ViewHolder(detailsBinding.root) {
 
-        val imageView: ImageView = detailsBinding.dishImageView
-        val titleView: TextView = detailsBinding.dishesIngredients
-
-        val layout = detailsBinding.root
-
-        fun bind(dish: Item) {
-            Picasso.get()
-                    .load(dish.getFirstPicture())
-                    .placeholder(R.drawable.carpaccio)
-                    .resize(400, 200)
-                    .into(imageView)
-
-          // fonction pour ingredient  titleView.text = dish.ingredients
-
-
-
-        }
-    }
 }
