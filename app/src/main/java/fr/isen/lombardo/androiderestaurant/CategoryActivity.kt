@@ -18,27 +18,28 @@ enum class ItemType {
 
 }
 class CategoryActivity : AppCompatActivity() {
-    private lateinit var bindind: ActivityCategoryBinding
+    private lateinit var binding: ActivityCategoryBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindind = ActivityCategoryBinding.inflate(layoutInflater)
-        setContentView(bindind.root)
+        binding = ActivityCategoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val selectedItem = intent.getSerializableExtra(MainActivity.CATEGORY_NAME) as? ItemType
-        bindind.categoryTitle.text = getCategoryTitle(selectedItem)
+        binding.categoryTitle.text = getCategoryTitle(selectedItem)
         val categoryTitle= getCategoryTitle(selectedItem)
         makeRequest(categoryTitle)
         Log.d("lifecycle", "onCreate")
     }
 
     private fun loadList(dishes: List<Item>?) {
-        val entries = dishes?.map { it.name }
-        entries?.let {
-            val adapter = CategoryAdapter(entries)
-            bindind.recyclerView.layoutManager = LinearLayoutManager(this)
-            bindind.recyclerView.adapter = adapter
+        dishes?.let {
+            val adapter = CategoryAdapter(it) { dish ->
+                Log.d("dish", "selected dish ${dish.name}")
+            }
+            binding.recyclerView.layoutManager = LinearLayoutManager(this)
+            binding.recyclerView.adapter = adapter
         }
     }
     private fun getCategoryTitle(item: ItemType?): String {
@@ -82,5 +83,19 @@ class CategoryActivity : AppCompatActivity() {
             }
         )
         queue.add(request)
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("lifecycle", "onResume")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("lifecycle", "onRestart")
+    }
+
+    override fun onDestroy() {
+        Log.d("lifecycle", "onDestroy")
+        super.onDestroy()
     }
 }

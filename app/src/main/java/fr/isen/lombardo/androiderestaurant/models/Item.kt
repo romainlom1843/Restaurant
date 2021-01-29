@@ -4,19 +4,19 @@ import com.google.gson.annotations.SerializedName
 
 class Item( @SerializedName("name_fr")
             val name:String,
-            val images:List<String>,
+            val image:List<String>,
             val ingredients: List<Ingredient>,
             val prices: List<Price>) {
     fun getPrice() = prices[0].price.toDouble()
     fun getFormattedPrice() = prices[0].price + "€"
-    fun getFirstPicture() = if (images.isNotEmpty() && images[0].isNotEmpty()) {
-        images[0]
+    fun getFirstPicture() = if (image.isNotEmpty() && image[0].isNotEmpty()) {
+        image[0]
     } else {
         null
     }
 
-    fun getAllPictures() = if (images.isNotEmpty() && images.any { it.isNotEmpty() }) {
-        images.filter { it.isNotEmpty() }
+    fun getAllPictures() = if (image.isNotEmpty() && image.any { it.isNotEmpty() }) {
+        image.filter { it.isNotEmpty() }
     } else {
         null
     }

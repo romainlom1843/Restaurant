@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/villa_soleil2"
+    >
 
     <TextView
         android:id="@+id/mainTitle"
@@ -15,8 +17,8 @@
         android:layout_marginRight="24dp"
         android:fontFamily="monospace"
         android:text="La Villa Soleil"
-        android:textColor="#2196F3"
-        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/mainImage"
@@ -33,13 +35,13 @@
         app:layout_constraintTop_toTopOf="@+id/mainTitle"
         app:srcCompat="@drawable/villa_soleil" />
 
-    <TextView
+    <Button
         android:id="@+id/entreeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="Entrées"
-        android:textColor="#000000"
+        android:text="Entrees"
+        android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,14 +50,14 @@
         app:layout_constraintTop_toBottomOf="@+id/mainTitle"
         app:layout_constraintVertical_bias="0.237" />
 
-    <TextView
+    <Button
         android:id="@+id/platTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="monospace"
         android:text="Plats"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,14 +66,14 @@
         app:layout_constraintTop_toBottomOf="@+id/entreeTitle"
         app:layout_constraintVertical_bias="0.133" />
 
-    <TextView
+    <Button
         android:id="@+id/dessertsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="monospace"
         android:text="Desserts"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,19 +82,6 @@
         app:layout_constraintTop_toBottomOf="@+id/platTitle"
         app:layout_constraintVertical_bias="0.195" />
 
-    <TextView
-        android:id="@+id/menusTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:text="Menus"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dessertsTitle"
-        app:layout_constraintVertical_bias="0.264" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
