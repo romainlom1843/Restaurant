@@ -3,10 +3,8 @@ package fr.isen.lombardo.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.util.Log
-import android.widget.Button
-import android.widget.Toast
+import fr.isen.lombardo.androiderestaurant.activity.CategoryActivity
+import fr.isen.lombardo.androiderestaurant.activity.ItemType
 import fr.isen.lombardo.androiderestaurant.databinding.ActivityMainBinding
 
 private lateinit var binding: ActivityMainBinding

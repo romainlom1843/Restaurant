@@ -1,4 +1,4 @@
-package fr.isen.lombardo.androiderestaurant
+package fr.isen.lombardo.androiderestaurant.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,9 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
+import fr.isen.lombardo.androiderestaurant.MainActivity
+import fr.isen.lombardo.androiderestaurant.R
+import fr.isen.lombardo.androiderestaurant.adapter.CategoryAdapter
 import fr.isen.lombardo.androiderestaurant.databinding.ActivityCategoryBinding
 import fr.isen.lombardo.androiderestaurant.models.Item
 import fr.isen.lombardo.androiderestaurant.models.MenuResult
@@ -19,7 +22,6 @@ enum class ItemType {
 }
 class CategoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoryBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,18 +37,25 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun loadList(dishes: List<Item>?) {
         dishes?.let {
-            val adapter = CategoryAdapter(it) { dish ->
-                Log.d("dish", "selected dish ${dish.name}")
-            }
+            val adapter =
+                CategoryAdapter(it) { dish ->
+                    Log.d("dish", "selected dish ${dish.name}")
+                }
             binding.recyclerView.layoutManager = LinearLayoutManager(this)
             binding.recyclerView.adapter = adapter
         }
     }
     private fun getCategoryTitle(item: ItemType?): String {
         return when (item) {
-            ItemType.ENTREE -> getString(R.string.entree)
-            ItemType.MAIN -> getString(R.string.main)
-            ItemType.DESSERT -> getString(R.string.dessert)
+            ItemType.ENTREE -> getString(
+                R.string.entree
+            )
+            ItemType.MAIN -> getString(
+                R.string.main
+            )
+            ItemType.DESSERT -> getString(
+                R.string.dessert
+            )
 
             else -> ""
         }
