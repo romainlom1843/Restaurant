@@ -3,6 +3,7 @@
     <string name="entree">Entrées</string>
     <string name="main">Plats</string>
     <string name="dessert">Desserts</string>
+    <string name="total">Total</string>
 
 
 </resources>

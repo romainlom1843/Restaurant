@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidERestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DetailActivity"></activity>
+        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".activity.DetailActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".NetworkConstant" />
         <activity android:name=".activity.CategoryActivity" />
