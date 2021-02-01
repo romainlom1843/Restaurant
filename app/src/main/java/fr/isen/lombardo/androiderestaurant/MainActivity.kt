@@ -1,14 +1,14 @@
 package fr.isen.lombardo.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import fr.isen.lombardo.androiderestaurant.activity.BaseActivity
 import fr.isen.lombardo.androiderestaurant.activity.CategoryActivity
 import fr.isen.lombardo.androiderestaurant.activity.ItemType
 import fr.isen.lombardo.androiderestaurant.databinding.ActivityMainBinding
 
 private lateinit var binding: ActivityMainBinding
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

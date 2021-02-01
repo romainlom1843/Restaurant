@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">AndroidERestaurant</string>
+    <string name="app_name">La Villa Soleil</string>
     <string name="entree">Entrées</string>
     <string name="main">Plats</string>
     <string name="dessert">Desserts</string>
     <string name="total">Total</string>
+    <string name="basket_validation">Vos plats ont bien été ajoutés au panier</string>
+    <string name="basket">Panier</string>
+    <string name="quantity">Quantité :</string>
 
 
 </resources>

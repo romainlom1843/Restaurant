@@ -1,7 +1,6 @@
 package fr.isen.lombardo.androiderestaurant.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,7 +8,6 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
-import fr.isen.lombardo.androiderestaurant.DetailsActivity
 import fr.isen.lombardo.androiderestaurant.MainActivity
 import fr.isen.lombardo.androiderestaurant.R
 import fr.isen.lombardo.androiderestaurant.adapter.CategoryAdapter
@@ -22,7 +20,7 @@ enum class ItemType {
     ENTREE, MAIN, DESSERT
 
 }
-class CategoryActivity : AppCompatActivity() {
+class CategoryActivity : BaseActivity() {
     private lateinit var binding: ActivityCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

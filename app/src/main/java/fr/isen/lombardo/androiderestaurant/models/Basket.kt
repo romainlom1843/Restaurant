@@ -1,14 +1,20 @@
-package fr.isen.lombardo.androiderestaurant
+package fr.isen.lombardo.androiderestaurant.models
 
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
-import fr.isen.lombardo.androiderestaurant.models.Item
 import java.io.File
 import java.io.Serializable
 
 
 class Basket (@SerializedName("items" ) val items: MutableList<BasketItem>): Serializable {
+
+    var itemsCount: Int = 0
+        get() {
+            return items
+                    .map { it.count }
+                    .reduce { acc, i -> acc + i }
+        }
 
     fun addItem(item: BasketItem) {
         val existingItem = items.firstOrNull {
