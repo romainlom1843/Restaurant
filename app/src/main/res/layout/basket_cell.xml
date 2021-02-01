@@ -14,14 +14,13 @@
 
         <ImageView
             android:id="@+id/basketItemImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/basketItemTitle"
@@ -31,7 +30,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
+            android:textSize="24dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/basketItemDelete"
             app:layout_constraintStart_toEndOf="@+id/basketItemImageView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:textSize="24dp"
             android:text="TextView"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/basketItemImageView" />
 
@@ -52,15 +56,18 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_delete" />
+            app:srcCompat="@drawable/ic_delete"
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/basketItemQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:textStyle="bold"
             android:text="TextView"
-            android:textColor="@color/title"
+            android:textSize="16dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
