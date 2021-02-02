@@ -12,18 +12,11 @@ import fr.isen.lombardo.androiderestaurant.databinding.BasketCellBinding
 import fr.isen.lombardo.androiderestaurant.models.Basket
 import fr.isen.lombardo.androiderestaurant.models.BasketItem
 
-/*
-interface BasketCellInterface {
-    fun onDeleteItem(item: BasketItem)
-    fun onShowDetail(item: BasketItem) // Optional
-}
-
- */
 
 class BasketAdapter(private val basket: Basket,
                     private val context: Context,
-    /*private val delegate: BasketCellInterface*/
-                    private val entryClickListener: (BasketItem) -> Unit): RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
+                    private val entryClickListener: (BasketItem) -> Unit)
+                    : RecyclerView.Adapter<BasketAdapter.BasketViewHolder>() {
 
     class BasketViewHolder(binding: BasketCellBinding): RecyclerView.ViewHolder(binding.root) {
         private val itemTitle: TextView = binding.basketItemTitle
@@ -31,7 +24,7 @@ class BasketAdapter(private val basket: Basket,
         private val itemQuantity: TextView = binding.basketItemQuantity
         private val itemImageView: ImageView = binding.basketItemImageView
         private val deleteButton: ImageView = binding.basketItemDelete
-        val layout = binding.root
+
 
         fun bind(item: BasketItem, context: Context, entryClickListener: (BasketItem) -> Unit/*, delegate: BasketCellInterface*/) {
             itemTitle.text = item.dish.name
@@ -42,7 +35,6 @@ class BasketAdapter(private val basket: Basket,
                 .placeholder(R.drawable.carpaccio)
                 .into(itemImageView)
             deleteButton.setOnClickListener {
-                //delegate.onDeleteItem(item)
                 entryClickListener.invoke(item)
             }
         }
@@ -54,12 +46,6 @@ class BasketAdapter(private val basket: Basket,
 
     override fun onBindViewHolder(holder: BasketViewHolder, position: Int) {
         val item = basket.items[position]
-        /*
-        holder.layout.setOnClickListener {
-            // Click sur detail item
-            delegate.onShowDetail(item)
-        }
-        */
         holder.bind(item, context, entryClickListener)
     }
 

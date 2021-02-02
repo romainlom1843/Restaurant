@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidERestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.BaseActivity"></activity>
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.BasketActivity" />
         <activity android:name=".activity.DetailsActivity" />
         <activity android:name=".activity.CategoryActivity" />
