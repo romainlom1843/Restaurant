@@ -64,8 +64,8 @@ class BasketActivity : AppCompatActivity() {
 
         if(requestCode == RegisterActivity.REQUEST_CODE ) {
             val sharedPreferences = getSharedPreferences(RegisterActivity.USER_PREFERENCES_NAME, Context.MODE_PRIVATE)
-            val idUser = sharedPreferences.getInt(RegisterActivity.ID_USER, -1)
-            if(idUser != -1) {
+            val idUser = sharedPreferences.getString(RegisterActivity.ID_USER, "-1")
+            if(idUser != "-1") {
                 Log.d("ici", "ici")
                 sendOrder(idUser)
             }
@@ -73,7 +73,7 @@ class BasketActivity : AppCompatActivity() {
     }
 
 
-    private fun sendOrder(idUser: Int) {
+    private fun sendOrder(idUser: String?) {
         val message = basket.items.map { "${it.count}x ${it.dish.name}" }.joinToString("\n")
         val queue = Volley.newRequestQueue(this)
         val url = "http://test.api.catering.bluecodegames.com/user/order"
@@ -87,7 +87,7 @@ class BasketActivity : AppCompatActivity() {
                 Request.Method.POST,
                 url,
                 jsonData,
-                { response ->
+                {
                     val builder = AlertDialog.Builder(this)
                     builder.setMessage("Votre commande a bien été prise en compte")
                     builder.setPositiveButton("OK") { dialogInterface: DialogInterface, i: Int ->
