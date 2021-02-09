@@ -9,14 +9,14 @@
     <string name="quantity">Quantité :</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
-    <string name="enregistrer">Enregistrer</string>
+    <string name="enregistrer">S\'enregistrer</string>
     <string name="loguer">Se connecter</string>
     <string name="name">Nom</string>
     <string name="surname">Prenom</string>
     <string name="email">Email</string>
     <string name="sign_up">Sign up</string>
     <string name="address">Adresse</string>
-    <string name="login2">Or login here</string>
+    <string name="login2">Ou se connecter ici</string>
 
 
 </resources>

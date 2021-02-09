@@ -20,12 +20,15 @@ open class BaseActivity: AppCompatActivity() {
         countText?.text = count.toString()
 
         menuView?.setOnClickListener {
-            val intent = Intent(this, BasketActivity::class.java)
-            startActivity(intent)
+            if(count > 0) {
+                val intent = Intent(this, BasketActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         return true
     }
+
 
     override fun onResume() {
         super.onResume()

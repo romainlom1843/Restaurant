@@ -14,7 +14,7 @@ import fr.isen.lombardo.androiderestaurant.models.Item
 import kotlin.math.max
 
 private lateinit var binding: ActivityDetailsBinding
-private var itemCount = 1
+private var itemCount = 0
 
 class DetailsActivity : BaseActivity() {
    companion object {

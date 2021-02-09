@@ -1,6 +1,7 @@
 package fr.isen.lombardo.androiderestaurant.activity
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import fr.isen.lombardo.androiderestaurant.models.User
 import org.json.JSONObject
 
 private lateinit var binding: ActivityLoginBinding
+
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +24,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnLogin.setOnClickListener {
             if(verifyLogin()) {
                 doRequest()
+
             } else {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show()
             }
@@ -46,7 +50,11 @@ class LoginActivity : AppCompatActivity() {
                     response ->
                 Log.d("Request",response.toString())
                 val user= GsonBuilder().create().fromJson(response.toString(), JsonResult::class.java )
-                saveUser(user.data)
+                if(user.data != null) {
+                    saveUser(user.data)
+                } else {
+                    Toast.makeText(this, "Identifiants incorrect", Toast.LENGTH_LONG).show()
+                }
 
             },
             {
@@ -67,11 +75,8 @@ class LoginActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putString(RegisterActivity.ID_USER, user.id)
         editor.apply()
-
         setResult(Activity.RESULT_FIRST_USER)
         finish()
     }
-
-
 
 }

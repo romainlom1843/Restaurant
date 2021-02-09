@@ -19,7 +19,7 @@
 
 
         <ImageView
-            android:id="@+id/dishImageView"
+            android:id="@+id/dishImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
@@ -41,8 +41,8 @@
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dishImageView"
-            app:layout_constraintTop_toTopOf="@+id/dishImageView" />
+            app:layout_constraintStart_toEndOf="@+id/dishImage"
+            app:layout_constraintTop_toTopOf="@+id/dishImage" />
 
         <TextView
             android:id="@+id/dishPrice"
@@ -54,8 +54,8 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/dishImageView"
-            app:layout_constraintStart_toEndOf="@+id/dishImageView" />
+            app:layout_constraintBottom_toBottomOf="@+id/dishImage"
+            app:layout_constraintStart_toEndOf="@+id/dishImage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

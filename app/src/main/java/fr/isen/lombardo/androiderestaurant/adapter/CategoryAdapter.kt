@@ -34,21 +34,21 @@ class CategoryAdapter(private val entries: List<Item>,
     }
 
     class DishesViewHolder(dishesBinding: DishesCellBinding): RecyclerView.ViewHolder(dishesBinding.root) {
-        val titleView: TextView = dishesBinding.dishesTitle
-        val priceView: TextView = dishesBinding.dishPrice
-        val imageView: ImageView = dishesBinding.dishImageView
+        private val titleDish: TextView = dishesBinding.dishesTitle
+        private val priceDish: TextView = dishesBinding.dishPrice
+        private val imageDish: ImageView = dishesBinding.dishImage
 
         val layout = dishesBinding.root
 
         fun bind(dish: Item) {
-            titleView.text = dish.name
-            priceView.text = "${dish.prices.first().price} €"// dish.prices.first().price + " €"
+            titleDish.text = dish.name
+            priceDish.text = "${dish.prices.first().price} €"// dish.prices.first().price + " €"
 
             Picasso.get()
                     .load(dish.getFirstPicture())
                     .placeholder(R.drawable.carpaccio)
                     .resize(400, 200)
-                    .into(imageView)
+                    .into(imageDish)
                     //.error(R.drawable.villa_soleil)
         }
     }

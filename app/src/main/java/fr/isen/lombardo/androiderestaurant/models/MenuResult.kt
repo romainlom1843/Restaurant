@@ -1,6 +1,6 @@
 package fr.isen.lombardo.androiderestaurant.models
 
 
-class MenuResult (val data: List<Category>){}
+class MenuResult (val data: List<Category>)
 
 
