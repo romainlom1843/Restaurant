@@ -19,6 +19,7 @@ import fr.isen.lombardo.androiderestaurant.MainActivity
 
 private lateinit var binding: ActivityBasketBinding
 private lateinit var basket : Basket
+
 class BasketActivity : AppCompatActivity(){
 
 

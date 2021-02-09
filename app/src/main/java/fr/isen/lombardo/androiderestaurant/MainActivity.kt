@@ -14,19 +14,19 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.entreeTitle.setOnClickListener{
-            startCategoryActivity(ItemType.ENTREE)
+            startCategoryByItem(ItemType.ENTREE)
         }
         binding.platTitle.setOnClickListener{
-            startCategoryActivity(ItemType.MAIN)
+            startCategoryByItem(ItemType.PLAT)
         }
         binding.dessertsTitle.setOnClickListener{
-            startCategoryActivity(ItemType.DESSERT)
+            startCategoryByItem(ItemType.DESSERT)
         }
 
 
 
     }
-    private fun startCategoryActivity(item: ItemType) {
+    private fun startCategoryByItem(item: ItemType) {
         val intent = Intent(this, CategoryActivity::class.java)
         intent.putExtra(CATEGORY_NAME, item)
         startActivity(intent)

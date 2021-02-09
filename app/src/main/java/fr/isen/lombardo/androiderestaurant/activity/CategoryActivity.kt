@@ -17,7 +17,7 @@ import fr.isen.lombardo.androiderestaurant.models.MenuResult
 import org.json.JSONObject
 
 enum class ItemType {
-    ENTREE, MAIN, DESSERT
+    ENTREE, PLAT, DESSERT
 
 }
 class CategoryActivity : BaseActivity() {
@@ -53,7 +53,7 @@ class CategoryActivity : BaseActivity() {
             ItemType.ENTREE -> getString(
                 R.string.entree
             )
-            ItemType.MAIN -> getString(
+            ItemType.PLAT -> getString(
                 R.string.main
             )
             ItemType.DESSERT -> getString(
